@@ -1,7 +1,21 @@
 package andi.u5d4.entities;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.AnyDiscriminatorImplicitValues;
 
+@Entity
+@Table(name = "toppings")
+@Getter
+@Setter
+@ToString
 public class Topping extends Item {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id_toppings;
+    @Column(nullable = false)
     private String name;
 
     public Topping(int calories, double price, String name) {
@@ -9,18 +23,4 @@ public class Topping extends Item {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Topping{" +
-                "name='" + name + '\'' +
-                '}';
-    }
 }
