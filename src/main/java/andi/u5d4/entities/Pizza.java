@@ -32,5 +32,9 @@ public class Pizza extends Item {
         this.name = name;
         this.toppings = toppings;
     }
+
+    public Pizza(int calories, double price) {
+        super(calories, price);
+    }
 }
 

@@ -1,0 +1,29 @@
+package andi.u5d4.services;
+
+import andi.u5d4.entities.Pizza;
+import andi.u5d4.exceptions.ValidationException;
+import andi.u5d4.repositories.PizzeRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+
+@Service
+@Slf4j
+public class PizzaService {
+
+    private final PizzeRepository pizzeRepository;
+
+    @Autowired
+    public PizzaService(PizzeRepository pizzeRepository) {
+        this.pizzeRepository = pizzeRepository;
+    }
+
+    public void savePizza(Pizza newPizza) {
+        if (newPizza.getName().length() < 2) throw new ValidationException("Il nome non può essere più corto di 2 caratteri");
+        this.pizzeRepository.save(newPizza);
+        log.info("La pizza " + pizzeRepository + " è stata salvata correttamente"); // Alternativa più PRO ai normali system out
+    }
+}
