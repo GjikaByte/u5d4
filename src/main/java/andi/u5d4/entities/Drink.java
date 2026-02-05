@@ -1,6 +1,19 @@
 package andi.u5d4.entities;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Entity
+@Setter
+@Getter
+@ToString
 public class Drink extends Item{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id_drink;
+    @Column(nullable = false)
     private String name;
 
     public Drink(int calories, double price, String name) {
@@ -8,20 +21,4 @@ public class Drink extends Item{
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Drink{" +
-                "name='" + name + '\'' +
-                "calories" + super.getCalories() +
-                "price" + super.getPrice() +
-                '}';
-    }
 }
