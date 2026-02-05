@@ -34,18 +34,37 @@ public class MyRunner implements CommandLineRunner {
 //
 //        Ordine ordine = ctx.getBean(Ordine.class);
 //        System.out.println(ordine);
-        List<Topping> hamSalami = new ArrayList<>();
+//        List<Topping> hamSalami = new ArrayList<>();
+//        List<Topping> hamPineapple = new ArrayList<>();
+//
+//
+//        Topping ham = (Topping) ctx.getBean("Ham");
+//        Topping salami = (Topping) ctx.getBean("Salami");
+//        Topping pineapple = (Topping) ctx.getBean("Pineapple");
+//
+//
+//        toppingService.saveTopping(ham);
+//        toppingService.saveTopping(salami);
+//        toppingService.saveTopping(pineapple);
+//
+//
+//        Topping hamDB = toppingService.findById(1);
+//        Topping salamiDB = toppingService.findById(2);
+//        Topping pineappleDB = toppingService.findById(3);
+//
+//        hamSalami.add(hamDB);
+//        hamSalami.add(salamiDB);
+//
+//        hamPineapple.add(hamDB);
+//        hamPineapple.add(pineappleDB);
+//
+//        Pizza pizzaHamSalami = new Pizza("Pizza HamSalami", hamSalami);
+//        Pizza pizzaHawaiian = new Pizza("Pizza Hawaiian", hamPineapple);
 
-        Topping ham = (Topping) ctx.getBean("Ham");
-        Topping salami = (Topping) ctx.getBean("Salami");
-
-        toppingService.saveTopping(ham);
-        toppingService.saveTopping(salami);
-
-        hamSalami.add(ham);
-        hamSalami.add(salami);
-
-        Pizza pizzaHamSalami = new Pizza("Pizza HamSalami", hamSalami);
-        pizzaService.savePizza(pizzaHamSalami);
+//        pizzaService.savePizza(pizzaHamSalami);
+//        pizzaService.savePizza(pizzaHawaiian);
+//        toppingService.findByIdAndDelete(4);
+//        toppingService.findByIdAndDelete(5);
+//        toppingService.findByIdAndDelete(6);
     }
 }

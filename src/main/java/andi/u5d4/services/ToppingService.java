@@ -1,6 +1,7 @@
 package andi.u5d4.services;
 
 import andi.u5d4.entities.Topping;
+import andi.u5d4.exceptions.NotFoundException;
 import andi.u5d4.exceptions.ValidationException;
 import andi.u5d4.repositories.ToppingsRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +23,32 @@ public class ToppingService {
         if (newTopping.getName() == null || newTopping.getName().length() < 2) {
             throw new ValidationException("Il nome del topping non può essere più corto di 2 caratteri");
         }
+
         this.toppingRepository.save(newTopping);
+
         log.info("Il topping '" + newTopping.getName() + "' è stato salvato correttamente");
+    }
+
+    public Topping findById(long toppingId) {
+        return toppingRepository.findById(toppingId)
+                .orElseThrow(() -> new NotFoundException(toppingId));
+    }
+
+    public void findByIdAndUpdate(long toppingId, Topping updateTopping) {
+        Topping found = this.findById(toppingId);
+
+        found.setName(updateTopping.getName());
+
+        this.saveTopping(found);
+
+        log.info("Il topping " + found.getId_toppings() + " è stato modificato correttamente");
+    }
+
+    public void findByIdAndDelete(long toppingId) {
+        Topping found = this.findById(toppingId);
+
+        toppingRepository.delete(found);
+
+        log.info("Il topping " + found.getId_toppings() + " è stato cancellato correttamente");
     }
 }

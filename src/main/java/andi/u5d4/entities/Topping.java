@@ -23,4 +23,8 @@ public class Topping extends Item {
         this.name = name;
     }
 
+    protected Topping() {
+        super(0, 0);
+    }
+
 }
